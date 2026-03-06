@@ -12,6 +12,28 @@ contador_de_depositos = 0
 numero_maximo_saques = 10
 numero_maximo_depositos = 5
 saldo = 0
+
+#dicionário de clientes
+
+clientes = {
+    '463846792-21'{
+        'nome': "Gustavo"
+        'telefone: '122343232-3243'
+        'ativo': True
+    }
+    '3456783210'{
+        'nome': "Marquezine"
+        'telefone: '127433434-3263'
+        'ativo': True
+
+    }
+    '44027883829'{
+        'nome': 'Seu Jorge'
+        'telefone: '137433634-3243'
+        'ativo': True
+    }
+}
+
 # banco função sacar
 
 
@@ -32,6 +54,8 @@ def sacar(){
         
 }
 
+# banco função depositar
+
 def depositar(){
     valor_deposito = float(input('Digite o valor que deseja depositar'))
     if valor_deposito > numero_maximo_depositos:
@@ -46,3 +70,29 @@ def depositar(){
 
 }
 
+# banco função Extrato
+
+def Extrato(){
+    print('Você escolheu a função Extrato')
+    print(f'Você já efetuou {contador_de_saques} até o momento')
+    print(f'Seu saldo atual é {saldo:.2f}\n\n')
+
+    if historicoSaques:
+            print("Histórico de saques:")
+            for i, saque in enumerate(historico_Saques, 1):
+                print(f"Saque {i}: R${saque:.2f}")
+            print("\n")
+        if historicoDespositos:
+            print("Histórico de depósitos:")
+            for i, deposito in enumerate(historico_Despositos, 1):
+                print(f"Depósito {i}: R${deposito:.2f}")
+            print("\n")
+    
+
+}
+
+# banco função Criar usuário
+
+def Criar_ususario(){
+
+}
