@@ -91,4 +91,11 @@ def Criar_usuario():
     usuario_nome =input('Insira o nome: ')
     usuario_tel =input('Insira o telefone: ')
 
-    print('Qual conta deseja vincullar ao usuário')
+    usuarios = []
+
+    usuarios.append(usuario_cpf)
+    usuarios.append(usuario_nome)
+    usuarios.append(usuario_tel)
+
+
+    print('Qual conta deseja vincular ao usuário')
