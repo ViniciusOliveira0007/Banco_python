@@ -17,18 +17,21 @@ saldo = 0
 
 clientes = {
     '463846792-21':{
-        'nome': "Gustavo",
-        'telefone': '122343232-3243',
-        'ativo': True
+        "nome": "Gustavo",
+        "codigo": '0001',
+        "telefone": '122343232-3243',
+        "ativo": True
     },
     '3456783210':{
-        'nome': "Marquezine",
-        'telefone': '127433434-3263',
-        'ativo': True
+        "nome": "Marquezine",
+        "telefone": '127433434-3263',
+        "codigo": '0002',
+        "ativo": True
     },
     '44027883829':{
         'nome': 'Seu Jorge',
         'telefone': '137433634-3243',
+        'codigo': '0003',
         'ativo': True
     }
 }
@@ -48,7 +51,8 @@ def sacar():
     else:
         contador_de_saques += 1
         saldo -= valor_saque
-    
+        data_hora = datetime.now().strftime("%d/%m/%Y %H:%M")
+        historico_saques.append((valor_saque, data_hora))
         print('Seu saque foi concluído')
 
 # banco função depositar
@@ -72,14 +76,14 @@ def Extrato():
     print(f'Você já efetuou {contador_de_saques} até o momento')
     print(f'Seu saldo atual é {saldo:.2f}\n\n')
 
-    if historicoSaques:
+    if historico_saques:
         print("Histórico de saques:")
-        for i, saque in enumerate(historico_Saques, 1):
+        for i, saque in enumerate(historico_saques, 1):
             print(f"Saque {i}: R${saque:.2f}")
         print("\n")
-    if historicoDespositos:
+    if historico_depositos:
         print("Histórico de depósitos:")
-        for i, deposito in enumerate(historico_Despositos, 1):
+        for i, deposito in enumerate(historico_depositos, 1):
             print(f"Depósito {i}: R${deposito:.2f}")
         print("\n")
 
@@ -91,11 +95,24 @@ def Criar_usuario():
     usuario_nome =input('Insira o nome: ')
     usuario_tel =input('Insira o telefone: ')
 
-    usuarios = []
+    
 
-    usuarios.append(usuario_cpf)
-    usuarios.append(usuario_nome)
-    usuarios.append(usuario_tel)
+    if usuario_cpf not in clientes:
+        clientes.update({
+        #'cpf':{nome : 'bob'}
+        {usuario_cpf}:{'nome': {usuario_nome},
+                       'telefone': {usuario_tel}}
+    })
+        print('Novo cliente cadastrado com sucesso')
+    else:
+        print('Este cpf já existe, revise seus dados')
+
+def Criar_conta_corrente():
+    pass
 
 
-    print('Qual conta deseja vincular ao usuário')
+
+for cpf, dados in clientes.items():
+    print(f"CPF: {cpf} - Codigo: {dados['codigo']}")
+    
+
