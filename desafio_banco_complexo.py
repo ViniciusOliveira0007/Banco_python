@@ -12,29 +12,39 @@ contador_de_depositos = 0
 numero_maximo_saques = 10
 numero_maximo_depositos = 5
 saldo = 0
+contas_correntes = []
 
 #dicionário de clientes
 
 clientes = {
     '463846792-21':{
         "nome": "Gustavo",
-        "codigo": '0001',
         "telefone": '122343232-3243',
         "ativo": True
     },
     '3456783210':{
         "nome": "Marquezine",
         "telefone": '127433434-3263',
-        "codigo": '0002',
         "ativo": True
     },
     '44027883829':{
         'nome': 'Seu Jorge',
         'telefone': '137433634-3243',
-        'codigo': '0003',
         'ativo': True
     }
 }
+
+
+
+#dicionário agência 
+agencia = {
+    '0001': '463846792-21',
+    '0002': '3456783210',
+    '0003': '44027883829'
+
+}
+
+
 
 # banco função sacar
 
@@ -107,12 +117,17 @@ def Criar_usuario():
     else:
         print('Este cpf já existe, revise seus dados')
 
+
 def Criar_conta_corrente():
-    pass
+    print('Esse são os clientes')
+    for cpf, dados in clientes.items():
+        print(f"CPF: {cpf} - Codigo: {dados['codigo']}")
+    
+    
 
 
 
-for cpf, dados in clientes.items():
-    print(f"CPF: {cpf} - Codigo: {dados['codigo']}")
+
+
     
 
